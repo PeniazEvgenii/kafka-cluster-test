@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: ProductMicroservice
+
+  kafka:
+    producer:
+      properties:
+        enable:
+          idempotence: true
+        max:
+          in:
+            flight:
+              requests:
+                per:
+                  connection: 5
+        delivery:
+          timeout:
+            ms: 60000
+        linger:
+          ms: 0
+        request:
+          timeout:
+            ms: 30000
+        retry:
+          backoff:
+            ms: 100  #повторять отправку с интервалом 1 мс
+      retries: 10 # повторять 10 раз (будут с backoff интервалом 1000 мс)
+
+      acks: all  # ожидать ответ от всех insync реплик. У меня 2 в config
+
+      bootstrap-servers: localhost:9092, localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: 1
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 8111
+
