@@ -1,0 +1,12 @@
+package by.itacademy.withdrawalService;
+
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WithdrawalServiceApp {
+    public static void main(String[] args) {
+        SpringApplication.run(WithdrawalServiceApp.class, args);
+    }
+}

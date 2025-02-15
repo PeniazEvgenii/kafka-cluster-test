@@ -11,8 +11,13 @@
 	<modules>
 		<module>EmailNotificationMicroservice</module>
 		<module>ProductMicroservice</module>
+
 		<module>library</module>
         <module>mockService</module>
+
+		<module>WithdrawalService</module>
+		<module>TransferService</module>
+		<module>DepositService</module>
     </modules>
 
 
