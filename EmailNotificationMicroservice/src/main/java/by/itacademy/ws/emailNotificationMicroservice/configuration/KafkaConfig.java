@@ -40,6 +40,9 @@ public class KafkaConfig {
     @Value("${spring.kafka.consumer.group-id}")
     private String groupId;
 
+    @Value("${spring.kafka.consumer.auto-offset-reset}")
+    private String autoOffset;
+
     @Bean
     public ConsumerFactory<String, Object> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
@@ -52,6 +55,7 @@ public class KafkaConfig {
 
         config.put(JsonDeserializer.TRUSTED_PACKAGES, trustedPackages);
         config.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+        config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffset);
 
         return new DefaultKafkaConsumerFactory<>(config);
     }
